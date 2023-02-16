@@ -1,0 +1,45 @@
+\documentclass[10pt]{article}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{url}
+\usepackage{times}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\title{Research Project (PHAS0077) Outline 
+	\\ {\small Tools for Efficient Analysis of the Contur Result Database}}
+\author{Yihan Zhang \\ ID: 22042116 }
+\usepackage[left=3cm,right=3cm,top=0cm,bottom=2cm]{geometry} 
+\linespread{1.5}
+ \date{}
+\usepackage{hyperref}
+\begin{document}
+	\maketitle	
+	\section{Problem Description}
+	This project aims to enhance the functionality (especially the database) of Contur \cite{butterworth2017constraining} (Constraints On New Theories Using Rivet ). The main objective of Contur is to determine whether a particular theoretical model has already been ruled out, by leveraging the vast amount of data from hundreds of previous measurements taken at the Large Hadron Collider (LHC), which is stored in Rivet \cite{Bierlich_2020}. 	However, Contur is not good at gaining comprehensive insights into underlying outcomes since the output is in the format of figures, so users can only get few information from the figure. Therefore, this project is expected to involve more attributes into the database. Furthermore, the output is expected to be dynamic or multi-layer figures, which means users can gain more information by drilling down the generated pictures.
+	\section{Literature Review}
+	In this section, the brief history of Standard Model, Beyond Standard Model will be introduced. Packages involved in Contur project (such as Rivet, Herwig, YODA \cite{YODA}) will be introduced as well. Furthermore, techniques that can help users to drill down more information (event handling) will be discussed.
+	
+	The Standard Model of particle physics is a theoretical framework that describes the fundamental particles and the fundamental forces that govern their interactions. It has been incredibly successful in explaining a wide range of experimental data and making precise predictions. The Standard Model includes three of the four fundamental forces of nature: the electromagnetic, strong nuclear, and weak nuclear forces. It describes the interactions of three types of particles: quarks, which make up protons and neutrons, leptons, which include electrons and neutrinos, and bosons, which mediate the forces between particles.
+	
+	Despite its successes, the Standard Model has several limitations. For example, it does not explain the existence of dark matter or dark energy, which are believed to make up the majority of the matter and energy in the universe. It also does not account for the observed imbalance between matter and antimatter in the universe.
+	
+	Therefore, there is a need for a theoretical framework beyond the Standard Model that can explain these phenomena and provide a more complete understanding of the fundamental particles and forces. This is the motivation for Beyond the Standard Model (BSM) physics, which aims to extend the Standard Model to include new particles, interactions, and physical phenomena.
+	
+	Rivet is a set of software tools utilized in high-energy physics that enables the comparison of Monte Carlo simulations of particle collisions with experimental data. A significant characteristic of Rivet is its capability to operate with Monte Carlo event generators, such as Herwig.This functionality enables researchers to contrast the forecasts of various theoretical models with actual experimental data, thereby aiding in the assessment and improvement of our comprehension of the fundamental physics.
+	
+	Matplotlib \cite{Hunter:2007} is a library in Python that provides functionalities to create figures. It also provides event handling capabilities, which allows users to interact with plots using input devices such as the keyboard and mouse. Event handling in Matplotlib involves defining event handlers that can be triggered when a particular event occurs.
+	\section{Outline of Plans}
+\textbf{Data Preparation:}
+	Since we want to involve more attributes (measurements) into the database, we have to know what kinds of physics attributes are needed and useful for users. There are some testings files in the repository of Contur, so we may not have to prepare more datasets.
+
+\textbf{More Attributes inside Database:}
+	SQLite is the database engine embedded in the Contur.
+	If we want to add more attributes into the database, we need to know how to create tables or how to insert new columns into existing tables using the syntax of SQLite. Furthermore, we have to revise the code related to inserting results into the database.
+	
+\textbf{Put More Information on Output File:}
+	Currently, the plot output is a grid figure, and we want to know more information of each grid. The easiest way to implement this is to add more texts on each grid or generate figures for each grid. (But It is not user-friendly). The normal format of figures such as png, jpeg cannot be multi-layered or dynamic. In order to implement this functionality, the GUI event handing technique of Matplotlib package could be one method. However, since YODA is used for plotting. It is challenging to reconstruct the whole plotting workflow.
+	
+\bibliographystyle{IEEEtran}
+\bibliography{reference}
+\end{document}
